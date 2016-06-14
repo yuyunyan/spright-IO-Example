@@ -1,0 +1,91 @@
+USE [Spright]
+GO
+/****** Object:  StoredProcedure [dbo].[EVA_Records_Select_By_DealerID]    Script Date: 6/13/2016 6:25:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROC [dbo].[EVA_Records_Select_By_DealerID]
+
+@DealerID int,
+@CurrentPage int = 1,
+@ItemsPerPage int = 10
+
+AS
+BEGIN
+	
+DECLARE @RecordIdTable TABLE(
+     ID int NOT NULL
+);
+
+INSERT INTO @RecordIdTable
+
+SELECT r.[ID]	
+
+
+FROM [dbo].[EVA_Records] as r inner join [dbo].[dealerRecord1] as dr
+ON r.ID = dr.RecordID
+WHERE dr.DealerID= @DealerID
+
+/*DROP PAGINATION HERE*/
+ORDER BY r.ID DESC
+		 
+		 OFFSET ((@CurrentPage - 1) * @ItemsPerPage) ROWS
+                FETCH NEXT  @ItemsPerPage ROWS ONLY
+
+SELECT [ID]
+	  ,[EntityID]
+	  ,[WebsiteId]
+	  
+FROM [dbo].[EVA_Records]
+WHERE ID IN (SELECT ID FROM @RecordIdTable) 
+order by ID desc -- Order by ID when select from that table it mess up the order 
+ 
+
+SELECT 
+      v.RecordID,
+	  v.AttributeID,
+	  v.ValueString,
+	  v.ValueInt,
+	  v.ValueDecimal,
+	  v.ValueText,
+	  v.ValueGeo,
+	  a.Slug,
+	  a.Name
+
+FROM [dbo].[EVA_Values] as v 
+INNER JOIN [EVA_Attributes] as a
+ON v.AttributeID= a.ID
+WHERE RecordID IN (SELECT ID FROM @RecordIdTable) 
+	
+
+
+ SELECT 
+       m.[ID]
+      ,m.[MediaType]
+      ,m.[Path]
+      ,m.[FileName]
+      ,m.[FileType]
+      ,m.[Title]
+      ,m.[Description]
+      ,m.[UserID]
+	  ,m.[ThumbnailPath]
+      ,m.[CreatedDate]
+      ,m.[ModifiedDate]
+	  ,rm.MediaID
+	  ,rm.RecordID
+	  ,rm.DealerID
+	  ,rm.IsCoverPhoto
+
+ FROM dbo.Medias as m inner join dbo.EVA_Dealer_Record_Medias AS rm 
+ on  m.[ID]= rm.MediaID
+ WHERE rm.DealerID= @DealerID
+
+
+ END
+
+
+
+
+
