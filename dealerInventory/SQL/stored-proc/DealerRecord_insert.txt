@@ -5,24 +5,20 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 ALTER proc [dbo].[DealerRecord_Insert]
             @DealerID int,
 			@RecordID int
-			
 AS
-  
 BEGIN
-
     INSERT INTO dbo.DealerRecord1
            (   
                 [DealerID],
-		        [RecordID]
+		[RecordID]
             )
      VALUES
            (	
 		    @DealerID,
-			@RecordID
+		    @RecordID
 			   )
          
  
