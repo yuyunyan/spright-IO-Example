@@ -1,0 +1,87 @@
+﻿
+<div ng-include="'/Scripts/sabio/application/dealerInventory/templates/tabs.html'"></div>
+<br />
+<style>
+   
+    .border{
+        border:solid 4px palegreen;
+    }
+</style>
+<div class="col-md-12" id="avaCtrler">
+
+    <div class="page-content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget">
+                    <div class="widget-heading">
+                        <a ng-href="#/list" class="btn btn-info pull-right btn-outline" id="newCar">Back</a>
+                        <h3 class="widget-title">My Vehicle Images</h3>
+                       
+                    </div>
+                    <div class="widget-body">
+
+                        <div class="tab-content">
+
+                            <div id="home" role="tabpanel" aria-labelledby="home-tab" aria-expanded="true" class="tab-pane fade active in">
+
+                                <div class="container-fluid">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p>Upload your vehicle image below:</p>
+
+                                                <!-- Initialize ngDropzone directive -->
+                                                <div class="dropzone"
+                                                     method="post"
+                                                     enctype="multipart/form-data"
+                                                     ng-dropzone
+                                                     dropzone="ava.dropzone"
+                                                     dropzone-config="ava.dzConfig"
+                                                     event-handlers="{
+                                                 'addedfile': ava.dzAddedFile,
+                                                 'error': ava.dzError,
+                                                 'sending': ava.dzOnSending,
+                                                 'success': ava.dzOnSuccess,
+                                                 }">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div ng-repeat="data in ava.media | filter: { mediaType: '1' }" ng-init="img={}">
+                                                    <!--vm.media = source.items;= ava.media-->
+                                                   
+                                                    <br />
+                                                    <img id="VehicleMedia" ng-src="{{data.fullUrl}}" 
+                                                      class="img-rounded img-responsive" 
+                                                      ng-class="{'border':data.isCoverPhoto===true}"  
+                                                      width="150" height="150">
+                                                    <br />
+                                                    <button type="button" class="btn btn-success btn-outline"
+                                                       ng-click="ava.setMain(data.id)"
+                                                       ng-hide="data.isCoverPhoto">
+                                                    <!--SAME SAYING ng-hide="data.isCoverPhoto===true" hide the buttton when is ture-->
+                                                          Set as cover photo</button>
+                                                    <!--data.id is from Media Domain Model(ID), and json convert to lowercase(id); check the VehiclemediaController to see another piece of the puzzle-->
+                                                <button type="button" class="btn btn-danger btn-outline"
+                                                    ng-click="ava.deleteQuestion(data.id)"
+                                                        >Delete</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
