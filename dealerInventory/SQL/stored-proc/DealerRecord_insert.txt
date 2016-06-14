@@ -1,0 +1,30 @@
+USE [Spright]
+GO
+/****** Object:  StoredProcedure [dbo].[DealerRecord_Insert]    Script Date: 6/13/2016 5:55:35 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER proc [dbo].[DealerRecord_Insert]
+            @DealerID int,
+			@RecordID int
+			
+AS
+  
+BEGIN
+
+    INSERT INTO dbo.DealerRecord1
+           (   
+                [DealerID],
+		        [RecordID]
+            )
+     VALUES
+           (	
+		    @DealerID,
+			@RecordID
+			   )
+         
+ 
+ 
+END
