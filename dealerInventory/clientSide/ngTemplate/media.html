@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div ng-repeat="data in ava.media | filter: { mediaType: '1' }" ng-init="img={}">
-                                                    <!--vm.media = source.items;= ava.media-->
+                                                   
                                                    
                                                     <br />
                                                     <img id="VehicleMedia" ng-src="{{data.fullUrl}}" 
@@ -59,9 +59,9 @@
                                                     <button type="button" class="btn btn-success btn-outline"
                                                        ng-click="ava.setMain(data.id)"
                                                        ng-hide="data.isCoverPhoto">
-                                                    <!--SAME SAYING ng-hide="data.isCoverPhoto===true" hide the buttton when is ture-->
+                                                   
                                                           Set as cover photo</button>
-                                                    <!--data.id is from Media Domain Model(ID), and json convert to lowercase(id); check the VehiclemediaController to see another piece of the puzzle-->
+                                                   
                                                 <button type="button" class="btn btn-danger btn-outline"
                                                     ng-click="ava.deleteQuestion(data.id)"
                                                         >Delete</button>
