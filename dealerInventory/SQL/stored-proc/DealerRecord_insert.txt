@@ -7,7 +7,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 ALTER proc [dbo].[DealerRecord_Insert]
             @DealerID int,
-			@RecordID int
+            @RecordID int
 AS
 BEGIN
     INSERT INTO dbo.DealerRecord1
