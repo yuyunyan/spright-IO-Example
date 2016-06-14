@@ -10,7 +10,7 @@ ALTER proc [dbo].[DealerRecord_Insert]
             @RecordID int
 AS
 BEGIN
-    INSERT INTO dbo.DealerRecord1
+    INSERT INTO dbo.DealerRecord
            (   
                 [DealerID],
 		[RecordID]
