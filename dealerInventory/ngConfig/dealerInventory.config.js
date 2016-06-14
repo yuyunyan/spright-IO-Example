@@ -12,15 +12,15 @@
                 templateUrl: '/Scripts/sabio/application/dealerInventory/templates/edit.html',
                 controller: 'vehicleEditController',
                 controllerAs: 'edit'
-            }).when('/create', { //edit and create share the same view and controller 
+            }).when('/create', { 
                 templateUrl: '/Scripts/sabio/application/dealerInventory/templates/edit.html',
                 controller: 'vehicleEditController',
                 controllerAs: 'edit'
-            }).when('/media/:recordID', { //edit and create share the same view and controller 
+            }).when('/media/:recordID', { 
                 templateUrl: '/Scripts/sabio/application/dealerInventory/templates/media.html',
                 controller: 'vehicleMediaController',
                 controllerAs: 'ava'
-            }).when('/video/:recordID', { //edit and create share the same view and controller 
+            }).when('/video/:recordID', { 
                 templateUrl: '/Scripts/sabio/application/dealerInventory/templates/video.html',
                 controller: 'vehicleVideoController',
                 controllerAs: 'vvc'
