@@ -1,0 +1,106 @@
+﻿
+
+       <section>
+
+           <div class="container">
+              
+                       <h2>My Cars</h2>
+                   
+                       <hr />
+                 
+                   <a ng-href="#/create" class="btn btn-info btn-outline pull-right" id="newCar">New Car</a>
+              
+           </div><!-- /.page-header -->
+           <div class="row-item" dir-paginate="data in list.items | filter:list.q |  itemsPerPage:list.pageSize"
+                total-items="list.totalItems" current-page="list.currentPage">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-md-9 col-sm-12">
+                           <div id="main">
+                               <div class="row-block block" id="best-deals">
+                                  
+
+                                   <div class="row">
+                                       <div class="col-md-12">
+                                           <div class="content white">
+                                               <div class="inner" id="vehicleList">
+
+                                                   <!-- *** Temp goes in here ***  -->
+                                                   <!-- ng-repeat="team in teams | orderObjectBy:order_item:order_reverse"- fliter is not working now->
+                                             <!--track by Id is not working-->
+                                                   <div class="inner">
+                                                       <div class="row">
+                                                           <div class="col-lg-8 col-md-7 col-sm-7">
+
+                                                               <div class="picture">
+                                                                   <uib-carousel ng-if="data.pictures" active="active" interval="myInterval" no-wrap="noWrapSlides">
+                                                                       <uib-slide ng-repeat="media in data.pictures" ng-if="media.mediaType==1" index="media.id">
+                                                                           <img ng-src="{{media.fullUrl}}" style="height:100%;width:100%;">
+                                                                       </uib-slide>
+                                                                   </uib-carousel>
+                                                                   <a href="detail.html" class="slide"
+                                                                      ng-if="!data.pictures">
+                                                                       <!--IF no medias then show default photo-->
+                                                                       <img src="/Image/caratimg/content/toyota1.jpg" style="height:auto;width:100%;" alt="#" />
+
+                                                                   </a>
+                                                                   
+                                                               </div><!-- /.photo carouse -->
+
+                                                           </div><!-- /.col-md-4 -->
+                                                           <div class="col-lg-4 col-md-5 col-sm-5" >
+                                                               <div class="content-inner">
+                                                                   <h3 >
+                                                                       <a ng-href="#/edit/{{data.recordID}}" class="vehicleTitle">{{data.model.year}} {{data.model.make}}  {{data.model.model}} </a>
+                                                                   </h3>
+                                                                   <div class="subtitle">RecordID: {{data.id}}</div><!-- /.subtitle -->
+                                                                  
+                                                                   <div class="description">
+                                                                       <p></p>
+                                                                   </div><!-- /.description -->
+                                                                   <div class="meta">
+                                                                       <ul>
+                                                                           <li>
+                                                                               <i class="icon icon-normal-dashboard"></i> Price:{{data.model.selling-price}}
+                                                                           </li>
+                                                                           <li >
+                                                                               <i class="icon icon-normal-dashboard"></i> Doors: {{data.model.doors}}
+                                                                           </li>
+                                                                          
+                                                             
+                                                                           <li class="pull-right" style="background-color:#fff;">
+                                                                               <a ng-href="#/edit/{{data.id}}" class="btn btn-black btn-outline ">
+                                                                                  Edit
+                                                                               </a>
+                                                                               <button type="button" class="btn btn-danger btn-outline" 
+                                                                                style="margin:5px;"  id="clearBtn" ng-click="list.deleteVehicle(data.id)">Delete</button>
+                                                                           </li>
+                                                                       </ul>
+                                                                   </div><!-- /.meta -->
+
+                                                               </div><!-- /.content-inner -->
+                                                           </div><!-- /.col-md-8 -->
+                                                       </div><!-- /.row -->
+                                                   </div><!-- /.inner -->
+
+
+                                               </div><!-- /.inner -->
+                                           </div>
+                                       </div><!-- /.content -->
+                                   </div><!-- /.col-md-12 -->
+                               </div><!-- /.row -->
+                           </div><!-- /.block -->
+                       </div><!-- /#main -->
+                   </div><!-- /.col-md-9 -->
+
+               </div><!-- /.row -->
+
+           </div><!-- /.container -->
+      
+      </section><!-- /.section -->
+
+     <div class="container">
+       <dir-pagination-controls boundary-links="true" on-page-change="list.pageChangeHandler(newPageNumber);"
+       template-url="/Scripts/bower_components/angularUtils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
+       <!--This template-url are the buttons, remove it and desgin ur own one if u like-->
+    </div>
