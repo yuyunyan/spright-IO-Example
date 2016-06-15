@@ -1,8 +1,8 @@
-﻿if (!sabio.services.dealerRecord)
-    sabio.services.dealerRecord = {}
+﻿if (!spright.services.dealerRecord)
+    spright.services.dealerRecord = {}
 
 // create vehicle
-sabio.services.dealerRecord.addRecord = function (payload, onSuccess, onError) {
+spright.services.dealerRecord.addRecord = function (payload, onSuccess, onError) {
     $.ajax({
         type: 'POST',
         data: payload,
@@ -13,7 +13,7 @@ sabio.services.dealerRecord.addRecord = function (payload, onSuccess, onError) {
     });
 };
 
-sabio.services.dealerRecord.listRecords = function (payload,onSuccess, onError) {
+spright.services.dealerRecord.listRecords = function (payload,onSuccess, onError) {
     $.ajax({
         type: 'GET',
         data: payload,
@@ -24,7 +24,7 @@ sabio.services.dealerRecord.listRecords = function (payload,onSuccess, onError) 
     });
 };
 
-sabio.services.dealerRecord.insertPictures = function (payload, onSuccess, onError) {
+spright.services.dealerRecord.insertPictures = function (payload, onSuccess, onError) {
     $.ajax({
         type: 'POST',
         data: payload,
@@ -36,7 +36,7 @@ sabio.services.dealerRecord.insertPictures = function (payload, onSuccess, onErr
 };
 
 
-sabio.services.dealerRecord.getMediaByRecordID= function (recordID, onSuccess, onError) {
+spright.services.dealerRecord.getMediaByRecordID= function (recordID, onSuccess, onError) {
     $.ajax({
         type: 'GET',
         data: recordID,
@@ -47,7 +47,7 @@ sabio.services.dealerRecord.getMediaByRecordID= function (recordID, onSuccess, o
     });
 };
 
-sabio.services.dealerRecord.setMainPicture = function (payload, onSuccess, onError) {
+spright.services.dealerRecord.setMainPicture = function (payload, onSuccess, onError) {
     $.ajax({
         type: 'POST',
         data: payload,
@@ -58,7 +58,7 @@ sabio.services.dealerRecord.setMainPicture = function (payload, onSuccess, onErr
     });
 };
 
-sabio.services.dealerRecord.deleteRecordByDealerIdRecordId = function (recordID, onSuccess, onError) {
+spright.services.dealerRecord.deleteRecordByDealerIdRecordId = function (recordID, onSuccess, onError) {
     $.ajax({
         type: 'DELETE',
         data: recordID,
@@ -70,7 +70,7 @@ sabio.services.dealerRecord.deleteRecordByDealerIdRecordId = function (recordID,
 
 };
 // must use request model for the payload 
-sabio.services.dealerRecord.deleteMediaByMediaIdRecordId = function (payload, onSuccess, onError) {
+spright.services.dealerRecord.deleteMediaByMediaIdRecordId = function (payload, onSuccess, onError) {
     $.ajax({
         type: 'DELETE',
         data: payload,
@@ -82,7 +82,7 @@ sabio.services.dealerRecord.deleteMediaByMediaIdRecordId = function (payload, on
 }
 
     
-    sabio.services.dealerRecord.deleteVideoByMediaIdRecordId = function (payload, onSuccess, onError) {
+    spright.services.dealerRecord.deleteVideoByMediaIdRecordId = function (payload, onSuccess, onError) {
         $.ajax({
             type: 'DELETE',
             data: payload,
