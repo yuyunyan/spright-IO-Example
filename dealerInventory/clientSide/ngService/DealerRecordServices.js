@@ -4,13 +4,13 @@
     angular.module(APPNAME)
          .factory('$dealerRecordService', DealerRecordService);
 
-    DealerRecordService.$inject = ['$baseService', '$sabio'];    //  $sabio is a reference to sabio.page object which is created in sabio.js
+    DealerRecordService.$inject = ['$baseService', '$spright'];    
 
-    function DealerRecordService($baseService, $sabio) {
+    function DealerRecordService($baseService, $spright) {
 
-        var aSabioServiceObject = sabio.services.dealerRecord;
+        var aSprightServiceObject = spright.services.dealerRecord;
 
-        var newService = $baseService.merge(true, {}, aSabioServiceObject, $baseService);
+        var newService = $baseService.merge(true, {}, aSprightServiceObject, $baseService);
 
         return newService;
     }
